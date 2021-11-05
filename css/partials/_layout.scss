@@ -1,0 +1,43 @@
+// Layout of project
+
+// Container devices
+$container-xl: 1440px;
+$container-lg: 1140px;
+$container-md: 960px;
+$container-sm: 540px;
+
+// Mixins of media query
+@mixin responsive($device) {
+
+    // For resolutions upper than 1440px
+    @if $device == xl {
+        @media screen and (min-width: $container-xl) {
+            @content;
+        }
+    }
+    // For resolutions between 1140px and 1440px
+    @else if $device == lg {        
+        @media screen and (max-width: $container-xl) and (min-width: $container-lg) {
+            @content;
+        }
+    }
+    // For resolutions between 960px and 1140px
+    @else if $device == md {        
+        @media screen and (max-width: $container-lg) and (min-width: $container-md) {
+            @content;
+        }
+    }
+    // For resolutions less than 960px
+    @else if $device == sm {        
+        @media screen and (max-width: $container-md) {
+            @content;
+        }
+    }
+    // For resolutions less than 540px
+    @else if $device == xs {        
+        @media screen and (max-width: $container-sm) {
+            @content;
+        }
+    }
+
+}
